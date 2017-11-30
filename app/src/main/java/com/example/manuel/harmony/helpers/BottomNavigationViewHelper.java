@@ -1,0 +1,55 @@
+package com.example.manuel.harmony.helpers;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
+import android.view.MenuItem;
+
+import com.example.manuel.harmony.Climb.ClimbActivity;
+import com.example.manuel.harmony.Friends.FriendsActivity;
+import com.example.manuel.harmony.Logbook.LogbookActivity;
+import com.example.manuel.harmony.Home.MainActivity;
+import com.example.manuel.harmony.R;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+/**
+ * Created by manuel on 29/11/2017.
+ */
+
+public class BottomNavigationViewHelper {
+
+    private static final String TAG = "BottomNavigationViewHel";
+
+    public static void setupBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx) {
+        Log.d(TAG, "setupBottomNavigationView: settingup BottonNavigationView");
+    }
+
+    public static void enableNAvigation(final Context context, BottomNavigationViewEx view) {
+        view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent intentToHome = new Intent(context, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        context.startActivity(intentToHome);
+                        return true;
+                    case R.id.navigation_map:
+                        Intent intentToClimb = new Intent(context, ClimbActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        context.startActivity(intentToClimb);
+                        return true;
+                    case R.id.navigation_logbook:
+                        Intent intentToLogbook = new Intent(context, LogbookActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        context.startActivity(intentToLogbook);
+                        return true;
+                    case R.id.navigation_user:
+                        Intent intentToProfile = new Intent(context, FriendsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        context.startActivity(intentToProfile);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
+}

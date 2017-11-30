@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">harmony</string>
+    <string name="title_profile_problems">Ascensos</string>
+    <string name="title_map">Escala</string>
+    <string name="title_activity_climb">ClimbActivity</string>
+    <string name="title_friends">Amigos</string>
+    <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_logbook">Libreta</string>
+    <string name="title_activity_logbook">LogbookActivity</string>
+    <string name="title_profile_points">Puntos</string>
+    <string name="title_user">Perfil</string>
+    <string name="title_activity_profile">Profileactivity</string>
+    <string name="title_profile_repeats">Repeticiones</string>
+</resources>

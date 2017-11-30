@@ -1,0 +1,31 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/green_to_black_shadow"
+            android:layout_alignParentTop="true"
+            android:id="@+id/top_shadow"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/top_shadow"
+            android:background="@drawable/black_shadow_inverse"
+            android:layout_alignParentTop="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/black_shadow"
+            android:layout_alignParentBottom="true" />
+
+
+    </RelativeLayout>
+</merge>

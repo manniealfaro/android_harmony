@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name" translatable="false">harmony</string>
+    <string name="title_home">Home</string>
+    <string name="title_logbook">Logbook</string>
+    <string name="title_map">Climb</string>
+    <string name="title_user">Profile</string>
+    <string name="title_friends">Friends</string>
+
+    <string name="title_profile_problems">Ascents</string>
+    <string name="title_profile_points">Points</string>
+    <string name="title_profile_repeats">Repeats</string>
+    <string name="title_profile_add_friend">Add friend</string>
+
+
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_logbook">LogbookActivity</string>
+    <string name="title_activity_climb">ClimbActivity</string>
+    <string name="title_activity_friends">FriendsActivity</string>
+
+
+</resources>
