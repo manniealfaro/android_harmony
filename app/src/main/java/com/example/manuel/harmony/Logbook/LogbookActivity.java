@@ -8,12 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.manuel.harmony.BaseActivity;
+import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
 import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-public class LogbookActivity extends AppCompatActivity {
+public class LogbookActivity extends BaseActivity {
 
     private static final String TAG = "LogbookActivity";
     private static final int ACTIVITY_NUM = 2;
@@ -52,7 +55,7 @@ public class LogbookActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        com.example.manuel.harmony.Home.SectionsPagerAdapter adapter = new com.example.manuel.harmony.Home.SectionsPagerAdapter(getSupportFragmentManager());
+        com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new LogbookMapFragment());
         adapter.addFragment(new LogbookListFragment());
 

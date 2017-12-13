@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="405dp">
                 <LinearLayout
-                    android:background="@color/colorPrimary"
+                    android:background="?colorPrimaryS"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:orientation="vertical">
@@ -75,7 +75,7 @@
                                 android:textStyle="bold"
                                 android:textSize="20sp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/colorPrimary"/>
+                                android:textColor="?colorPrimaryS"/>
 
                         </LinearLayout>
                         <LinearLayout
@@ -97,7 +97,7 @@
                                 android:textStyle="bold"
                                 android:textSize="20sp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/colorPrimary"/>
+                                android:textColor="?colorPrimaryS"/>
 
                         </LinearLayout>
                         <LinearLayout
@@ -119,7 +119,7 @@
                                 android:textStyle="bold"
                                 android:textSize="20sp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/colorPrimary"/>
+                                android:textColor="?colorPrimaryS"/>
 
                         </LinearLayout>
                     </LinearLayout>

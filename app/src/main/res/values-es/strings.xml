@@ -4,7 +4,7 @@
     <string name="title_profile_problems">Ascensos</string>
     <string name="title_map">Escala</string>
     <string name="title_activity_climb">ClimbActivity</string>
-    <string name="title_friends">Amigos</string>
+    <string name="title_friends">Ajustes</string>
     <string name="title_activity_friends">FriendsActivity</string>
     <string name="title_home">Inicio</string>
     <string name="title_logbook">Libreta</string>
@@ -13,4 +13,5 @@
     <string name="title_user">Perfil</string>
     <string name="title_activity_profile">Profileactivity</string>
     <string name="title_profile_repeats">Repeticiones</string>
+    <string name="select_theme">Selecciona un tema</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.manuel.harmony.Home;
+package com.example.manuel.harmony.Home.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

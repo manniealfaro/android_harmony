@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/green</color>
+    <!--<color name="colorPrimary">@color/green</color>-->
     <color name="colorPrimaryDark">@color/gray</color>
     <color name="colorSecondaryDark">@color/darkGray</color>
     <color name="colorAccent">@color/white</color>
 
     <color name="green">#FF0DC08C</color>
+    <color name="red">#A0000E</color>
+    <color name="yellow">#FFD700</color>
     <color name="white">#fefefe</color>
     <color name="gray">#f1f0f5</color>
     <color name="darkGray">#383838</color>

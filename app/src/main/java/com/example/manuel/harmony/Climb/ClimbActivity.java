@@ -9,11 +9,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.manuel.harmony.BaseActivity;
+import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
 import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-public class ClimbActivity extends AppCompatActivity {
+public class ClimbActivity extends BaseActivity {
 
     private static final String TAG = "ClimbActivity";
     private static final int ACTIVITY_NUM = 1;
@@ -52,7 +54,7 @@ public class ClimbActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        com.example.manuel.harmony.Home.SectionsPagerAdapter adapter = new com.example.manuel.harmony.Home.SectionsPagerAdapter(getSupportFragmentManager());
+        com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ClimbMapFragment());
         adapter.addFragment(new ClimbListFragment());
 

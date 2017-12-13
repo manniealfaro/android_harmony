@@ -37,7 +37,37 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topbar_shadow">
 
-                <include layout="@layout/layout_center_viewpager"/>
+
+
+                <!--<include layout="@layout/layout_center_viewpager"/>-->
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical" android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="12dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_theme"
+                        android:textAlignment="center"/>
+
+                    <Button
+                        android:id="@+id/green_theme_btn"
+                        android:text="GREEN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/red_theme_btn"
+                        android:text="RED"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/yellow_theme_btn"
+                        android:text="YELLOW"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
             </RelativeLayout>
 

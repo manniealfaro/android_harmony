@@ -1,9 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Green" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryS">@color/green</item>
         <item name="colorPrimaryDark">@color/gray</item>
         <item name="colorAccent">@color/white</item>
 
@@ -16,5 +17,41 @@
 
 
     </style>
+
+    <style name="AppTheme.Yellow" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryS">@color/yellow</item>
+        <item name="colorPrimaryDark">@color/gray</item>
+        <item name="colorAccent">@color/white</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+
+
+    </style>
+
+    <style name="AppTheme.Red" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryS">@color/red</item>
+        <item name="colorPrimaryDark">@color/gray</item>
+        <item name="colorAccent">@color/white</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+
+
+    </style>
+
+
 
 </resources>

@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/navigation_user"
-        android:icon="@drawable/ic_friends"
+        android:icon="@drawable/ic_settings_1"
         android:title="@string/title_friends" />
 
 </menu>
