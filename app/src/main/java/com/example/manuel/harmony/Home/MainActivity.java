@@ -1,6 +1,8 @@
 package com.example.manuel.harmony.Home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -13,6 +15,7 @@ import com.example.manuel.harmony.BaseActivity;
 import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
 import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
+import com.example.manuel.harmony.tour.IntroActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class MainActivity extends BaseActivity {
@@ -28,6 +31,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: starting.");
+
+        boolean isFirst = MyPreferences.isFirst(MainActivity.this);
+        if(isFirst){
+            startActivity(new Intent(this, IntroActivity.class));
+        }
 
         setupBottomNavigationView();
         setupViewPager();
@@ -72,6 +80,23 @@ public class MainActivity extends BaseActivity {
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
+    }
+
+}
+
+class MyPreferences {
+
+    private static final String MY_PREFERENCES = "my_preferences";
+
+    public static boolean isFirst(Context context){
+        final SharedPreferences reader = context.getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+        final boolean first = reader.getBoolean("is_first", true);
+        if(first){
+            final SharedPreferences.Editor editor = reader.edit();
+            editor.putBoolean("is_first", false);
+            editor.commit();
+        }
+        return first;
     }
 
 }
