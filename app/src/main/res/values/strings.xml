@@ -17,6 +17,13 @@
     <string name="title_activity_logbook">LogbookActivity</string>
     <string name="title_activity_climb">ClimbActivity</string>
     <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_activity_intro">IntroActivity</string>
+
+    <string name="intro_home_title">News feed</string>
+    <string name="intro_home_description">Stay tuned into your nearest news from mates and friends</string>
+
+    <string name="intro_climb_title">Climb</string>
+    <string name="intro_climb_description">If you wanna climb, here you can find the nearest crags and gyms in your zone</string>
 
 
 </resources>

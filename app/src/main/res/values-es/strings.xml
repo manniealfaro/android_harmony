@@ -13,4 +13,10 @@
     <string name="title_user">Perfil</string>
     <string name="title_activity_profile">Profileactivity</string>
     <string name="title_profile_repeats">Repeticiones</string>
+
+    <string name="intro_home_title">Noticias</string>
+    <string name="intro_home_description">Mantente enterado de las novedades en tu zona de amigos y compañeros</string>
+
+    <string name="intro_climb_title">Escalar</string>
+    <string name="intro_climb_description">Si quieres escalar, aqui puedes encontrar las escuelas y rocodromos mas cercanos</string>
 </resources>
