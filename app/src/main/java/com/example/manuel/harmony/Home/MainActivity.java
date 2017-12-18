@@ -1,22 +1,35 @@
 package com.example.manuel.harmony.Home;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.manuel.harmony.BaseActivity;
 import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
 import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
 import com.example.manuel.harmony.tour.IntroActivity;
+
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends BaseActivity {
 
@@ -33,7 +46,7 @@ public class MainActivity extends BaseActivity {
         Log.d(TAG, "onCreate: starting.");
 
         boolean isFirst = MyPreferences.isFirst(MainActivity.this);
-        if(isFirst){
+        if (isFirst) {
             startActivity(new Intent(this, IntroActivity.class));
         }
 
@@ -48,10 +61,24 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupViewPager() {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CameraFragment());
+        adapter.addFragment(new CameraFragmentOld());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new ProfileFragment());
+
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.body);
         viewPager.setAdapter(adapter);
@@ -81,6 +108,81 @@ public class MainActivity extends BaseActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
+    static final int REQUEST_TAKE_PHOTO = 1;
+
+    public void toCamera(View v){
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                ex.printStackTrace();
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.manuel.demos.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(mCurrentPhotoPath != null) {
+            Intent intent = new Intent(MainActivity.this, ColoreableActivity.class);
+            intent.putExtra("image", mCurrentPhotoPath);
+            startActivity(intent);
+        }
+    }
+
+    String mCurrentPhotoPath;
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        System.out.println("imgen guardada: "+mCurrentPhotoPath);
+        return image;
+    }
+
+//    private CameraFragment getCameraFragment() {
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//
+//        }
+//        CameraFragment cameraFragment = CameraFragment.newInstance(new Configuration.Builder().build());
+//
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.previewContainer, cameraFragment, "CameraFragmentOld")
+//                .commit();
+//
+//        getActionBar().hide();
+//
+//        return cameraFragment;
+//    }
 
 }
 

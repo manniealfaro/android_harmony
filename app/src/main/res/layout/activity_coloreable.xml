@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.manuel.harmony.Home.ColoreableActivity"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/lay_image"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image_colors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/button_blue"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/circle_button_blue" />
+
+            <Button
+                android:id="@+id/button_green"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/button_blue"
+                android:layout_toRightOf="@+id/button_blue"
+                android:background="@drawable/circle_button_green" />
+
+            <Button
+                android:id="@+id/button_red"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/button_green"
+                android:layout_toRightOf="@+id/button_green"
+                android:background="@drawable/circle_button_red" />
+
+            <Button
+                android:id="@+id/button_black"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/button_red"
+                android:layout_toRightOf="@+id/button_red"
+                android:background="@drawable/circle_button_black" />
+
+            <Button
+                android:id="@+id/button_upload"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/button_black"
+                android:background="@mipmap/button_upload"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

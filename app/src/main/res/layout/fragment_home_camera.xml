@@ -11,13 +11,12 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp">
 
-        <ImageView
-            android:id="@+id/mapView"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/to_camera_btn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/camera_ui"
-            android:scaleType="centerCrop"
-            />
+            android:onClick="toCamera"
+            android:text="@string/to_camera" />
 
     </LinearLayout>
 

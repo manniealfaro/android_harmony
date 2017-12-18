@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.manuel.harmony">
 
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,20 +27,20 @@
         </activity>
         <activity
             android:name=".Logbook.LogbookActivity"
-            android:label="@string/title_activity_logbook"/>
+            android:label="@string/title_activity_logbook" />
         <activity
             android:name=".Climb.ClimbActivity"
-            android:label="@string/title_activity_climb"></activity>
+            android:label="@string/title_activity_climb" />
         <activity
             android:name=".Friends.FriendsActivity"
-            android:label="@string/title_activity_friends"></activity>
+            android:label="@string/title_activity_friends" />
         <activity
             android:name=".BaseActivity"
-            android:label="@string/title_activity_base"></activity>
-
-        <activity android:name=".tour.IntroActivity"
-            android:label="@string/title_activity_intro"></activity>
-
+            android:label="@string/title_activity_base" />
+        <activity
+            android:name=".tour.IntroActivity"
+            android:label="@string/title_activity_intro" />
+        <activity android:name=".Home.ColoreableActivity"></activity>
     </application>
 
 </manifest>

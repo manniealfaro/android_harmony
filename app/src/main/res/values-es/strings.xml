@@ -23,4 +23,6 @@
     <string name="intro_climb_title">Escalar</string>
     <string name="intro_climb_description">Si quieres escalar, aqui puedes encontrar las escuelas y rocodromos mas cercanos</string>
 
+    <string name="to_camera">Capturar foto o video</string>
+
 </resources>
