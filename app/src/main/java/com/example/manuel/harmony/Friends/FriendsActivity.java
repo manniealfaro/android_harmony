@@ -311,6 +311,9 @@ public class FriendsActivity extends BaseActivity  implements View.OnClickListen
     //sign out method
     public void signOut() {
         auth.signOut();
+        startActivity(new Intent(com.example.manuel.harmony.Friends.FriendsActivity.this, LogInActivity.class));
+        finish();
+
     }
 
     @Override
