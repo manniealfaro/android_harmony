@@ -32,6 +32,7 @@
     <string name="intro_climb_title">Climb</string>
     <string name="intro_climb_description">If you wanna climb, here you can find the nearest crags and gyms in your zone</string>
 
+
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
@@ -76,6 +77,10 @@
     <string name="local">Local</string>
     <string name="regional">Regional</string>
     <string name="global">Global</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
 </resources>
