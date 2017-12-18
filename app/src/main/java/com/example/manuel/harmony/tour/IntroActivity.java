@@ -20,7 +20,7 @@ public class IntroActivity extends AppIntro {
 
 
         addSlide(AppIntroFragment.newInstance(getString(R.string.intro_home_title), getString(R.string.intro_home_description), R.drawable.home_intro, R.drawable.home_intro));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_climb_title), getString(R.string.intro_climb_description), R.drawable.camera_intro, R.color.colorPrimary));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_climb_title), getString(R.string.intro_climb_description), R.drawable.camera_intro, R.attr.colorPrimary));
     }
 
     @Override

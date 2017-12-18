@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "973808068112",
+    "firebase_url": "https://harmony-e0eab.firebaseio.com",
+    "project_id": "harmony-e0eab",
+    "storage_bucket": "harmony-e0eab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973808068112:android:5ecdf29ff1aa3e8e",
+        "android_client_info": {
+          "package_name": "com.example.manuel.harmony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973808068112-pi0p3obmj453mhtnjfh2gc7780hbr70q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCE8r_igvIolvX9K1Nk2XOPlw8UMSnr64"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

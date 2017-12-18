@@ -4,8 +4,6 @@ package com.example.manuel.harmony.Models;
  * Created by manuel on 30/11/2017.
  */
 
-import java.util.Date;
-
 
 public class HomeFeedNew {
     public String title;

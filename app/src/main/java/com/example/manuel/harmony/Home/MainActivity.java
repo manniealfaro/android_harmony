@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.manuel.harmony.Authentication.LogInActivity;
 import com.example.manuel.harmony.BaseActivity;
 import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
@@ -18,10 +19,16 @@ import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
 import com.example.manuel.harmony.tour.IntroActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MAINACTIVITY";
     private static final int ACTIVITY_NUM = 0;
+
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
 
     private Context mContext = MainActivity.this;
 
@@ -31,6 +38,25 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: starting.");
+
+        //get firebase auth instance
+        auth = FirebaseAuth.getInstance();
+
+        //get current user
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    startActivity(new Intent(MainActivity.this, LogInActivity.class));
+                    finish();
+                }
+            }
+        };
 
         boolean isFirst = MyPreferences.isFirst(MainActivity.this);
         if(isFirst){
@@ -42,9 +68,23 @@ public class MainActivity extends BaseActivity {
     }
 
     protected void onStart(Bundle savedInstance) {
+        super.onStart();
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onStart: started.");
 
+        auth.addAuthStateListener(authListener);
+
+        FirebaseUser user = auth.getCurrentUser();
+        updateUI(user);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (authListener != null) {
+            auth.removeAuthStateListener(authListener);
+        }
     }
 
     private void setupViewPager() {
@@ -81,6 +121,16 @@ public class MainActivity extends BaseActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
+    private void updateUI(FirebaseUser user) {
+
+
+    }
+
+    public void signOut() {
+        auth.signOut();
+    }
+
 
 }
 
