@@ -1,16 +1,13 @@
 package com.example.manuel.harmony.Home;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -19,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.manuel.harmony.BaseActivity;
+import com.example.manuel.harmony.Camera.ColoreableActivity;
 import com.example.manuel.harmony.Home.Adapters.SectionsPagerAdapter;
 import com.example.manuel.harmony.R;
 import com.example.manuel.harmony.helpers.BottomNavigationViewHelper;
@@ -62,23 +60,15 @@ public class MainActivity extends BaseActivity {
 
     private void setupViewPager() {
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CameraFragmentOld());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new ProfileFragment());
 
+       /* getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, cameraFragment, FRAGMENT_TAG)
+                .commit();
+*/
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.body);
         viewPager.setAdapter(adapter);

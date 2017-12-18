@@ -25,4 +25,8 @@
 
     <string name="to_camera">Capturar foto o video</string>
 
+    <string name="name_problem">Nombre del problema:</string>
+    <string name="grade">Grado:</string>
+    <string name="coment">Comentario:</string>
+
 </resources>

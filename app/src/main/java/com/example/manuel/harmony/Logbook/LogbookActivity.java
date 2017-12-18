@@ -19,7 +19,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 public class LogbookActivity extends BaseActivity {
 
     private static final String TAG = "LogbookActivity";
-    private static final int ACTIVITY_NUM = 2;
+    private static final int ACTIVITY_NUM = 3;
     private Context mContext = LogbookActivity.this;
 
     @Override

@@ -18,7 +18,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 public class ClimbActivity extends BaseActivity {
 
     private static final String TAG = "ClimbActivity";
-    private static final int ACTIVITY_NUM = 1;
+    private static final int ACTIVITY_NUM = 2;
     private Context mContext = ClimbActivity.this;
 
     @Override

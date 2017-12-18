@@ -40,7 +40,9 @@
         <activity
             android:name=".tour.IntroActivity"
             android:label="@string/title_activity_intro" />
-        <activity android:name=".Home.ColoreableActivity"></activity>
+        <activity android:name=".Camera.ColoreableActivity" />
+        <activity android:name=".Camera.CameraActivity" />
+        <activity android:name=".Camera.ProblemData"></activity>
     </application>
 
 </manifest>
