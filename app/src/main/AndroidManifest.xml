@@ -56,10 +56,13 @@
             android:name="com.example.manuel.harmony.Authentication.SignUpActivity"
             android:label="@string/title_activity_login" />
         <activity
+
             android:name="com.example.manuel.harmony.Authentication.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password" />
 
-        <activity android:name=".Home.ColoreableActivity"></activity>
+        <activity android:name=".Camera.ColoreableActivity" />
+        <activity android:name=".Camera.CameraActivity" />
+        <activity android:name=".Camera.ProblemData"></activity>
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.manuel.harmony.Home;
+package com.example.manuel.harmony.Camera;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -58,12 +58,9 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
 //        choosePicture.setOnClickListener(this);
         choosenImageView.setOnTouchListener(this);
 
-        if(getIntent().hasExtra("image")){
-            String im_path = getIntent().getStringExtra("image");
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            bmp = BitmapFactory.decodeFile(im_path, options);
-            try {
+
+        bmp = BitmapFactory.decodeResource(this.getResources(), R.drawable.climbing_wall);
+        try {
 //                BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
 //                bmpFactoryOptions.inJustDecodeBounds = true;
 //                bmp = BitmapFactory.decodeStream(getContentResolver().openInputStream(
@@ -73,21 +70,21 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
 //                bmp = BitmapFactory.decodeStream(getContentResolver().openInputStream(
 //                        imageFileUri), null, bmpFactoryOptions);
 
-                alteredBitmap = Bitmap.createBitmap(bmp.getWidth()*3/4, bmp
-                        .getHeight()*3/4, bmp.getConfig());
-                canvas = new Canvas(alteredBitmap);
-                paint = new Paint();
-                paint.setColor(color);
-                paint.setStrokeWidth(20);
-                matrix = new Matrix();
-                canvas.drawBitmap(bmp, matrix, paint);
+            alteredBitmap = Bitmap.createBitmap(bmp.getWidth()*3/4, bmp
+                    .getHeight()*3/4, bmp.getConfig());
+            canvas = new Canvas(alteredBitmap);
+            paint = new Paint();
+            paint.setColor(color);
+            paint.setStrokeWidth(20);
+            matrix = new Matrix();
+            canvas.drawBitmap(bmp, matrix, paint);
 
-                choosenImageView.setImageBitmap(alteredBitmap);
-                choosenImageView.setOnTouchListener(this);
-            } catch (Exception e) {
-                Log.v("ERROR", e.toString());
-            }
+            choosenImageView.setImageBitmap(alteredBitmap);
+            choosenImageView.setOnTouchListener(this);
+        } catch (Exception e) {
+            Log.v("ERROR", e.toString());
         }
+
 
         findViewById(R.id.button_blue).setOnClickListener(this);
         findViewById(R.id.button_green).setOnClickListener(this);
@@ -149,9 +146,9 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
                 alteredBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
 
-//                Intent intent = new Intent(this, ProblemData.class);
-//                intent.putExtra("image", byteArray);
-//                startActivity(intent);
+                Intent intent = new Intent(this, ProblemData.class);
+                intent.putExtra("image", byteArray);
+                startActivity(intent);
             }
         }
     }

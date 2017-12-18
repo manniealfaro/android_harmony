@@ -28,7 +28,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 public class FriendsActivity extends BaseActivity  implements View.OnClickListener {
 
     private static final String TAG = "FriendsActivity";
-    private static final int ACTIVITY_NUM = 3;
+    private static final int ACTIVITY_NUM = 4;
     private Context mContext = FriendsActivity.this;
 
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
