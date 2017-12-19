@@ -1,6 +1,8 @@
 package com.example.manuel.harmony.Climb;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,8 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.manuel.harmony.Camera.ProblemData;
 import com.example.manuel.harmony.Objects.Problem;
 import com.example.manuel.harmony.R;
 import com.google.firebase.database.ChildEventListener;
@@ -38,6 +43,8 @@ public class ClimbListFragment extends Fragment {
 
     private String problemId;
 
+    private ListView mListView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +55,36 @@ public class ClimbListFragment extends Fragment {
 
         problemList = new ArrayList<>();
 
+        mListView = (ListView) view.findViewById(R.id.problemlistview);
 
+        ProblemListAdapter problemsAdapter = new ProblemListAdapter(view.getContext(), problemList);
+
+        mListView.setAdapter(problemsAdapter);
+
+        final Context context = this.getContext();
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // 1
+                Problem selectedRecipe = problemList.get(position);
+
+                // 2
+                Intent detailIntent = new Intent(getActivity(), ProblemData.class);
+
+                // 3
+                detailIntent.putExtra("name", selectedRecipe.name);
+                detailIntent.putExtra("grade", selectedRecipe.grade);
+                detailIntent.putExtra("uploader", selectedRecipe.uploader);
+                detailIntent.putExtra("comment", selectedRecipe.comment);
+
+
+                // 4
+                startActivity(detailIntent);
+            }
+
+        });
 
         return view;
     }
@@ -67,6 +103,13 @@ public class ClimbListFragment extends Fragment {
                 Log.e(TAG, "onChildAdded:" + problem.name);
 
                 Problem latest = problemList.get(problemList.size() - 1);
+
+                mListView = (ListView) getView().findViewById(R.id.problemlistview);
+
+                ProblemListAdapter problemsAdapter = new ProblemListAdapter(getView().getContext(), problemList);
+
+                mListView.setAdapter(problemsAdapter);
+
             }
 
             @Override
