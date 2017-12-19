@@ -15,6 +15,8 @@ import android.widget.Spinner;
 
 import com.example.manuel.harmony.Objects.Boulder;
 import com.example.manuel.harmony.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.parceler.Parcels;
 
@@ -72,8 +74,8 @@ public class ProblemData extends AppCompatActivity {
 
         Boulder boulder = new Boulder(username, name.getText().toString() , Calendar.getInstance().getTime(), grade, com.getText().toString(), byteArray);
 
-        Intent intent = new Intent(this, BoulderViewer.class);
-        intent.putExtra("boulder", Parcels.wrap(boulder));
-        startActivity(intent);
+        //Intent intent = new Intent(this, BoulderViewer.class);
+        //intent.putExtra("boulder", Parcels.wrap(boulder));
+        //startActivity(intent);
     }
 }
