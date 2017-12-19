@@ -68,7 +68,7 @@
     <string name="prompt_password">prompt_password</string>
     <string name="name_problem">Problem Name:</string>
     <string name="grade">Grade:</string>
-    <string name="coment">Comentario:</string>
+    <string name="coment">Coment:</string>
     <string name="recent">Recent news in your zone</string>
     <string name="ranking_position">Ranking position:</string>
     <string name="number_of_boulders">Number of ascent boulders:</string>
@@ -85,9 +85,6 @@
 
     <string name="select_camera">Pulsa aqui para ir a la camara</string>
 
-    <string name="name_problem">Problem Name:</string>
-    <string name="grade">Grade:</string>
-    <string name="coment">Comentario:</string>
 
 
 
