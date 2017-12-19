@@ -62,7 +62,7 @@
         android:layout_marginBottom="17dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/white" />
+        android:textColor="#000" />
 
     <Spinner
         android:id="@+id/spinner2"
@@ -83,7 +83,7 @@
         android:layout_alignTop="@+id/coments"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/white" />
+        android:textColor="#000" />
 
     <Button
         android:id="@+id/button4"

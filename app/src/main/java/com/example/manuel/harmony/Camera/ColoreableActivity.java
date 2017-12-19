@@ -94,32 +94,6 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
     }
 
     public void onClick(View v) {
-
-        if (v == choosePicture) {
-            Intent choosePictureIntent = new Intent(
-                    Intent.ACTION_PICK,
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(choosePictureIntent, 0);
-        } else if (v == savePicture) {
-
-            if (alteredBitmap != null) {
-                ContentValues contentValues = new ContentValues(3);
-                contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, "Draw On Me");
-
-                Uri imageFileUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-                //grantUriPermission(String.valueOf(this), imageFileUri, Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                try {
-                    OutputStream imageFileOS = getContentResolver().openOutputStream(imageFileUri);
-                    alteredBitmap.compress(Bitmap.CompressFormat.JPEG, 90, imageFileOS);
-                    Toast t = Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT);
-                    t.show();
-
-                } catch (Exception e) {
-                    Log.v("EXCEPTION", e.getMessage());
-                }
-            }
-        }
-
         switch(v.getId()){
             case R.id.button_blue: {
                 changeColor(Color.CYAN);
@@ -149,6 +123,7 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
                 Intent intent = new Intent(this, ProblemData.class);
                 intent.putExtra("image", byteArray);
                 startActivity(intent);
+                break;
             }
         }
     }
@@ -159,40 +134,6 @@ public class ColoreableActivity extends Activity implements View.OnClickListener
 
 
 
-
-
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
-        if (resultCode == RESULT_OK) {
-            Uri imageFileUri = intent.getData();
-            try {
-                BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
-                bmpFactoryOptions.inJustDecodeBounds = true;
-                bmp = BitmapFactory.decodeStream(getContentResolver().openInputStream(
-                        imageFileUri), null, bmpFactoryOptions);
-
-                bmpFactoryOptions.inJustDecodeBounds = false;
-                bmp = BitmapFactory.decodeStream(getContentResolver().openInputStream(
-                        imageFileUri), null, bmpFactoryOptions);
-
-                alteredBitmap = Bitmap.createBitmap(bmp.getWidth(), bmp
-                        .getHeight(), bmp.getConfig());
-                canvas = new Canvas(alteredBitmap);
-                paint = new Paint();
-                paint.setColor(color);
-                paint.setStrokeWidth(20);
-                matrix = new Matrix();
-                canvas.drawBitmap(bmp, matrix, paint);
-
-                choosenImageView.setImageBitmap(alteredBitmap);
-                choosenImageView.setOnTouchListener(this);
-            } catch (Exception e) {
-                Log.v("ERROR", e.toString());
-            }
-        }
-    }
     public boolean onTouch(View v, MotionEvent event) {
         int action = event.getAction();
         switch (action) {
