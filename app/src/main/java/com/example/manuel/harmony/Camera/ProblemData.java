@@ -13,10 +13,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.example.manuel.harmony.Climb.ClimbActivity;
 import com.example.manuel.harmony.Objects.Boulder;
+import com.example.manuel.harmony.Objects.Problem;
 import com.example.manuel.harmony.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
@@ -29,7 +33,7 @@ public class ProblemData extends AppCompatActivity {
 
     String grade;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String username = user.getEmail();
+    String useremail = user.getEmail();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +67,9 @@ public class ProblemData extends AppCompatActivity {
     }
 
     public void upload(View v){
-        EditText com = (EditText) findViewById(R.id.comments);
-        EditText name = (EditText) findViewById(R.id.boudler_name);
+        EditText comment = (EditText) findViewById(R.id.problem_comment);
+        EditText name = (EditText) findViewById(R.id.problem_name);
+
         ImageView im = (ImageView) findViewById(R.id.imageView2);
         Bitmap bitIm = ((BitmapDrawable)im.getDrawable()).getBitmap();
 
@@ -72,10 +77,20 @@ public class ProblemData extends AppCompatActivity {
         bitIm.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
 
-        Boulder boulder = new Boulder(username, name.getText().toString() , Calendar.getInstance().getTime(), grade, com.getText().toString(), byteArray);
 
-        //Intent intent = new Intent(this, BoulderViewer.class);
-        //intent.putExtra("boulder", Parcels.wrap(boulder));
-        //startActivity(intent);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("problems");
+
+        // Creating new user node, which returns the unique key value
+        // new user node would be /users/$userid/
+        String problemId = mDatabase.push().getKey();
+
+        // creating user object
+        Problem problem = new Problem(name.getText().toString(),grade, byteArray, comment.getText().toString(), useremail);
+
+        // pushing user to 'users' node using the userId
+        mDatabase.child(problemId).setValue(problem);
+
+        Intent intent = new Intent(this, ClimbActivity.class);
+        startActivity(intent);
     }
 }
