@@ -29,4 +29,8 @@
     <string name="grade">Grado:</string>
     <string name="coment">Comentario:</string>
 
+    <string name="uploader_view">Autor:</string>
+
+    <string name="ascents_view">Ascensos:</string>
+
 </resources>

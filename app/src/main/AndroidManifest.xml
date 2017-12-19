@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.manuel.harmony">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -15,7 +13,6 @@
     <uses-permission android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,47 +20,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Green">
-        <activity android:name="com.example.manuel.harmony.Authentication.LogInActivity">
+        <activity android:name=".Authentication.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.manuel.harmony.Home.MainActivity"
+            android:name=".Home.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.Green">
-
-        </activity>
+            android:theme="@style/AppTheme.Green"></activity>
         <activity
-            android:name="com.example.manuel.harmony.Logbook.LogbookActivity"
-            android:label="@string/title_activity_logbook"/>
+            android:name=".Logbook.LogbookActivity"
+            android:label="@string/title_activity_logbook" />
         <activity
-            android:name="com.example.manuel.harmony.Climb.ClimbActivity"
-            android:label="@string/title_activity_climb"></activity>
+            android:name=".Climb.ClimbActivity"
+            android:label="@string/title_activity_climb" />
         <activity
-            android:name="com.example.manuel.harmony.Friends.FriendsActivity"
-            android:label="@string/title_activity_friends"></activity>
+            android:name=".Friends.FriendsActivity"
+            android:label="@string/title_activity_friends" />
         <activity
-            android:name="com.example.manuel.harmony.BaseActivity"
-            android:label="@string/title_activity_base"></activity>
-
-        <activity android:name="com.example.manuel.harmony.tour.IntroActivity"
-            android:label="@string/title_activity_intro"></activity>
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" />
         <activity
-            android:name="com.example.manuel.harmony.Authentication.SignUpActivity"
+            android:name=".tour.IntroActivity"
+            android:label="@string/title_activity_intro" />
+        <activity
+            android:name=".Authentication.SignUpActivity"
             android:label="@string/title_activity_login" />
         <activity
-
-            android:name="com.example.manuel.harmony.Authentication.ResetPasswordActivity"
+            android:name=".Authentication.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password" />
-
         <activity android:name=".Camera.ColoreableActivity" />
         <activity android:name=".Camera.CameraActivity" />
-        <activity android:name=".Camera.ProblemData"></activity>
-
+        <activity android:name=".Camera.ProblemData" />
+        <activity android:name=".Camera.BoulderViewer"></activity>
     </application>
 
 </manifest>

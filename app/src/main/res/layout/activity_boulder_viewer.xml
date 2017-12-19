@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.manuel.harmony.Camera.BoulderViewer">
+
+    <ImageView
+        android:id="@+id/imageViewBoulderViewer"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/climbing_wall" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="330dp"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/prob_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_problem"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/prob_grade_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/grade"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:layout_marginTop="65dp"/>
+
+        <TextView
+            android:id="@+id/prob_com_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coment"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="110dp" />
+
+        <TextView
+            android:id="@+id/prob_uploader_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uploader_view"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="155dp"/>
+
+        <TextView
+            android:id="@+id/prob_ascents_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ascents_view"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="200dp"
+            android:textColor="#000"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
