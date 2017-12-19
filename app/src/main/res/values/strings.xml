@@ -85,8 +85,9 @@
 
     <string name="select_camera">Pulsa aqui para ir a la camara</string>
 
+    <string name="uploader_view">Uploader:</string>
 
-
+    <string name="ascents_view">Ascents:</string>
 
 
 </resources>
