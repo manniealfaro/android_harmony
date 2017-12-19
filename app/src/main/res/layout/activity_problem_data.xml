@@ -51,8 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/grade"
-        android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/problem_name"
+
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/white"/>
@@ -61,16 +60,14 @@
         android:id="@+id/spinner2"
         android:layout_width="200dp"
         android:layout_height="25dp"
-        android:layout_alignEnd="@+id/boudler_name"
 
-        android:layout_alignStart="@+id/boudler_name"
         android:layout_alignTop="@+id/grade"/>
 
     <EditText
         android:id="@+id/comments"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_alignStart="@+id/spinner2"
+
         android:layout_alignTop="@+id/coments"
         android:ems="10"
         android:inputType="textPersonName"
