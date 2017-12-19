@@ -38,7 +38,7 @@ public class ProblemData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_problem_data);
+        setContentView(R.layout.activity_problem_data_l);
 
         if(getIntent().hasExtra("image")){
             byte[] byteArray = getIntent().getByteArrayExtra("image");
