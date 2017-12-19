@@ -21,7 +21,7 @@ public class Problem {
     public String grade;
     public String name;
     public String comment;
-    public byte[] image;
+    //public byte[] image;
     public int ascents;
     public int points;
 
@@ -35,16 +35,11 @@ public class Problem {
         this.grade = grade;
     }
 
-    public Problem(String name, String grade, byte[] image) {
-        this.name = name;
-        this.grade = grade;
-        this.image = image;
-    }
 
-    public Problem(String name, String grade, byte[] image, String comment, String uploader) {
+    public Problem(String name, String grade, String comment, String uploader) {
         this.name = name;
         this.grade = grade;
-        this.image = image;
+        //this.image = image;
         this.comment = comment;
         this.uploader = uploader;
     }

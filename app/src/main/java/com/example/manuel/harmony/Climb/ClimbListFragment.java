@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.manuel.harmony.Objects.Problem;
 import com.example.manuel.harmony.R;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,8 +30,11 @@ public class ClimbListFragment extends Fragment {
 
     public static final String TAG = "ClimbListFragment";
 
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mProblemReference;
+    private ChildEventListener mProblemListener;
+
+    private ArrayList<Problem> problemList;
 
     private String problemId;
 
@@ -38,45 +43,79 @@ public class ClimbListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_climb_list, container, false);
 
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mProblemReference = FirebaseDatabase.getInstance().getReference("problems");
 
-        // get reference to 'users' node
-        mFirebaseDatabase = mFirebaseInstance.getReference("problems");
-
-        // store app title to 'app_title' node
-        mFirebaseInstance.getReference("app_title").setValue("harmony");
-
-        // app_title change listener
-        mFirebaseDatabase.child(problemId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e(TAG, "Problems updated");
+        problemList = new ArrayList<>();
 
 
-                List<Problem> list = new ArrayList<>();
-
-                String name = (String) dataSnapshot.child("name").getValue();
-                String grade = (String) dataSnapshot.child("grade").getValue();
-                String comment = (String) dataSnapshot.child("comment").getValue();
-                String uploader = (String) dataSnapshot.child("uploader").getValue();
-                byte[] byteArray =  (byte[]) dataSnapshot.child("image").getValue();
-
-                Problem problem = new Problem(name,grade, byteArray, comment, uploader);
-
-
-                list.add(problem);
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.e(TAG, "Failed to read app data.", error.toException());
-            }
-        });
 
         return view;
     }
+
+    public void onStart() {
+        super.onStart();
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                // A new message has been added
+                // onChildAdded() will be called for each node at the first time
+                Problem problem = dataSnapshot.getValue(Problem.class);
+                problemList.add(problem);
+
+                Log.e(TAG, "onChildAdded:" + problem.name);
+
+                Problem latest = problemList.get(problemList.size() - 1);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.e(TAG, "onChildRemoved:" + dataSnapshot.getKey());
+
+                // A message has been removed
+                Problem problem = dataSnapshot.getValue(Problem.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.e(TAG, "onChildChanged:" + dataSnapshot.getKey());
+
+                // A message has changed
+                Problem problem = dataSnapshot.getValue(Problem.class);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.e(TAG, "onChildMoved:" + dataSnapshot.getKey());
+
+                // A message has changed position
+                Problem problem = dataSnapshot.getValue(Problem.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e(TAG, "postMessages:onCancelled", databaseError.toException());
+            }
+        };
+
+        mProblemReference.addChildEventListener(childEventListener);
+
+        // copy for removing at onStop()
+        mProblemListener = childEventListener;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        if (mProblemListener != null) {
+            mProblemReference.removeEventListener(mProblemListener);
+        }
+
+        for (Problem problem: problemList) {
+            Log.e(TAG, "listItem: " + problem.name);
+        }
+    }
+
 }

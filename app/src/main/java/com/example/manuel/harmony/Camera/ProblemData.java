@@ -85,7 +85,7 @@ public class ProblemData extends AppCompatActivity {
         String problemId = mDatabase.push().getKey();
 
         // creating user object
-        Problem problem = new Problem(name.getText().toString(),grade, byteArray, comment.getText().toString(), useremail);
+        Problem problem = new Problem(name.getText().toString(),grade, comment.getText().toString(), useremail);
 
         // pushing user to 'users' node using the userId
         mDatabase.child(problemId).setValue(problem);
