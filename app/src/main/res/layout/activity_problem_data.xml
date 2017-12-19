@@ -53,7 +53,7 @@
         android:layout_above="@+id/grade"
         android:layout_marginStart="17dp"
         android:layout_toEndOf="@+id/problem_name"
-        android:background="@color/black"
+
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/white"/>
