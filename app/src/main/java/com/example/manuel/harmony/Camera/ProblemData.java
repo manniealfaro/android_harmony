@@ -67,8 +67,8 @@ public class ProblemData extends AppCompatActivity {
     }
 
     public void upload(View v){
-        EditText comment = (EditText) findViewById(R.id.problem_comment);
-        EditText name = (EditText) findViewById(R.id.problem_name);
+        EditText comment = (EditText) findViewById(R.id.comments);
+        EditText name = (EditText) findViewById(R.id.boudler_name);
 
         ImageView im = (ImageView) findViewById(R.id.imageView2);
         Bitmap bitIm = ((BitmapDrawable)im.getDrawable()).getBitmap();
